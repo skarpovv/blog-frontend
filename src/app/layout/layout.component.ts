@@ -16,11 +16,4 @@ export class LayoutComponent {
     this._router.navigate(['/login']);
   }
 
-  home() {
-    this._router.navigate(['']);
-  }
-
-  profile() {
-    this._router.navigate(['/profile']);
-  }
 }

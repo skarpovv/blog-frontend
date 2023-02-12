@@ -3,7 +3,7 @@
     <p>Blogify</p>
   </div>
   <div>
-  <button mat-flat-button (click)="home()">Home</button>
+  <button mat-flat-button [routerLink]="['']" >Home</button>
   <button mat-flat-button [routerLink]="['/profile']">Profile</button>
   <button mat-flat-button (click)="logout()">Log out</button>
   </div>
