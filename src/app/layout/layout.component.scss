@@ -1,0 +1,28 @@
+:host {
+
+  .header {
+    display: flex;
+    justify-content: space-between;
+    background-color: #D5D3C3;
+    height: 50px;
+    width: 100%;
+
+    div {
+      display: flex;
+      align-items: center;
+      flex-direction: row;
+
+      p, button {
+        margin: 0 5px;
+      }
+      p {
+        font-family: 'Montserrat', sans-serif;
+        font-weight: bold;
+        font-size: large;
+        color: #1D9BF0;
+        padding-inline-start: 20px;
+      }
+    }
+  }
+
+}
