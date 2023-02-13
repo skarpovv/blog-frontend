@@ -13,7 +13,7 @@ export class LayoutComponent {
   logout() {
     localStorage.setItem('isAuth', 'false')
 
-    this._router.navigate(['/login']);
+    this._router.navigate(['/auth']);
   }
 
 }
