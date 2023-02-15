@@ -1,1 +1,61 @@
-<p>register works!</p>
+<form class="register-form" [formGroup]="form" (ngSubmit)="submit()">
+  <div class="title">Registration</div>
+  <mat-form-field appearance="outline">
+    <mat-label>Full Name</mat-label>
+    <input type="text" matInput  placeholder="Ex. Alex Smith" formControlName="fullName">
+    <mat-error *ngIf="nameControl.hasError('required')">
+      Name is <strong>required</strong>
+    </mat-error>
+    <mat-error *ngIf="nameControl.hasError('minlength')">
+      Username must contain at least {{ nameControl.errors?.minlength?.requiredLength }} characters
+    </mat-error>
+    <mat-error *ngIf="nameControl.hasError('hasSpecialSymbols')">
+      Username shouldn't contain special symbols
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Username</mat-label>
+    <input type="text" matInput  placeholder="Ex. alex1998" formControlName="username">
+    <mat-error *ngIf="nameControl.hasError('required')">
+      Username is <strong>required</strong>
+    </mat-error>
+    <mat-error *ngIf="usernameControl.hasError('minlength')">
+      Username must contain at least {{ usernameControl.errors?.minlength?.requiredLength }} characters
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Email</mat-label>
+    <input type="email" matInput  placeholder="Ex. alex@mail.com" formControlName="email">
+    <mat-error *ngIf="emailControl.hasError('email')">
+      Please enter a valid email address
+    </mat-error>
+    <mat-error *ngIf="emailControl.hasError('required')">
+      Email is <strong>required</strong>
+    </mat-error>
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label>Password</mat-label>
+    <input type="password" matInput placeholder="Enter your password" formControlName="password">
+    <mat-error *ngIf="passwordControl.hasError('required')">
+      Password is <strong>required</strong>
+    </mat-error>
+    <mat-error *ngIf="passwordControl.hasError('minlength')">
+      Password must contain at least {{ passwordControl.errors?.minlength?.requiredLength }} characters
+    </mat-error>
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label>Confirm the password</mat-label>
+    <input type="password" matInput placeholder="Enter your password again" formControlName="confirmPassword">
+    <mat-error *ngIf="confirmPasswordControl.hasError('required')">
+      Please <strong>confirm</strong> your password
+    </mat-error>
+  </mat-form-field>
+  <small [style.color]="'red'" *ngIf="form.hasError('passwordsMismatch')">
+    Passwords mismatch
+  </small>
+  <button mat-flat-button color="primary" type="submit" [disabled]="form.invalid">Register</button>
+</form>
+
+
