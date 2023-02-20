@@ -5,6 +5,7 @@
   align-items: center;
   flex-direction: column;
   height: 350px;
+  max-width: 400px;
 
   .title {
     font-weight: bold;
@@ -15,6 +16,7 @@
   .login-form {
     display: flex;
     flex-direction: column;
+    max-width: 240px;
 
     button {
       margin-bottom: 10px;

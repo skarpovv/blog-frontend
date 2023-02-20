@@ -10,6 +10,7 @@ import {
 } from "@angular/forms";
 import {AuthService} from "../../../services/auth";
 import {catchError, of, tap} from "rxjs";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-register',
@@ -20,7 +21,7 @@ export class RegisterComponent implements OnInit {
   form: FormGroup;
 
 
-  constructor(private _fb: FormBuilder, private _authService: AuthService) {
+  constructor(private _fb: FormBuilder, private _authService: AuthService, private _router: Router){
   }
 
   ngOnInit(): void {
@@ -28,8 +29,8 @@ export class RegisterComponent implements OnInit {
       fullName: ['', [Validators.minLength(3), Validators.required, this._specialSymbolValidator]],
       username: ['', [Validators.minLength(3), Validators.required]],
       email: ['', [Validators.email, Validators.required]],
-      password: ['', [Validators.required, Validators.minLength(6)]],
-      confirmPassword: ['', [Validators.required, Validators.minLength(6)]]
+      password: ['', [Validators.required, Validators.minLength(8)]],
+      confirmPassword: ['', [Validators.required, Validators.minLength(8)]]
     }, {validators: this._passwordsMatchValidator} )
   }
 
@@ -57,7 +58,11 @@ export class RegisterComponent implements OnInit {
     this.confirmPasswordControl.disable()
 
     this._authService.register(this.form.value).pipe(
-      tap((value) => console.log('Value: ', value)),
+      tap((value) => {
+        localStorage.setItem('isAuth', 'true')
+        this._router.navigate([''])
+        console.log('Value: ', value)
+      }),
       catchError((err) => {
         console.log('Error: ', err)
         return of(null)

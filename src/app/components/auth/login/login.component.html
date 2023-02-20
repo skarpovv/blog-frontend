@@ -1,9 +1,9 @@
 <div class="title"> Log in </div>
 <form class="login-form" [formGroup]="form" (ngSubmit)="submit()">
   <mat-form-field appearance="outline">
-    <mat-label>Username</mat-label>
-    <input type="text" matInput  placeholder="Ex. hugo1998" formControlName="username">
-    <mat-error *ngIf="usernameControl.hasError('required')">
+    <mat-label>Username or email</mat-label>
+    <input type="text" matInput  placeholder="Ex. hugo1998" formControlName="login">
+    <mat-error *ngIf="loginControl.hasError('required')">
       Username is <strong>required</strong>
     </mat-error>
   </mat-form-field>
@@ -17,6 +17,9 @@
       Username is <strong>required</strong>
     </mat-error>
   </mat-form-field>
+  <small *ngIf="loginError" [style.color]="'red'">
+    You entered an incorrect username or password
+  </small>
   <button mat-flat-button color="primary" type="submit" [disabled]="form.invalid">Enter</button>
   <div>Don't have a blogify profile yet? </div>
   <button mat-button [routerLink]="['/auth/register']">Sign Up!</button>

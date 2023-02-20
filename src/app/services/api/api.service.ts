@@ -10,6 +10,9 @@ export class ApiService {
   get register(): string {
     return `${this._authRoute}/register`
   }
+  get login(): string {
+    return `${this._authRoute}/login`
+  }
 
   private get _authRoute(): string {
     return `${this._baseApi}/auth`
