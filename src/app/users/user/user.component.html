@@ -1,0 +1,7 @@
+<mat-card class="container" [routerLink]="['/app', 'users', user._id]">
+  <mat-card-header>
+    <div mat-card-avatar style="background: url('https://picsum.photos/200') center/cover"></div>
+    <mat-card-title>{{ user.fullName ? user.fullName + ' / ' + user.username : user.username}}</mat-card-title>
+    <mat-card-subtitle>User / <b>{{ user.email || 'No email' }}</b></mat-card-subtitle>
+  </mat-card-header>
+</mat-card>

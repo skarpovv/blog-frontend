@@ -1,4 +1,17 @@
-<p>profile works!</p>
-<p>profile works!</p>
-<p>profile works!</p>
-<p>profile works!</p>
+<div class="user-profile">
+  <div class="user-details">
+    <img class="user-photo" src="https://picsum.photos/200" alt="User Photo">
+    <h2>{{ me.fullName }}</h2>
+    <p>{{ me.email || 'no-email' }}</p>
+    <!-- Add more user information here -->
+  </div>
+  <div class="user-posts">
+<!--    <h3>Posts</h3>-->
+<!--    <div class="post" *ngFor="let post of posts">-->
+<!--      <h4>{{ post.title }}</h4>-->
+<!--      <p>{{ post.content }}</p>-->
+<!--      &lt;!&ndash; Add more post details here &ndash;&gt;-->
+<!--    </div>-->
+    <!-- Add pagination or load more button if needed -->
+  </div>
+</div>

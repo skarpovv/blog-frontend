@@ -1,7 +1,6 @@
 import {ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {AuthService} from "../../../services/auth";
-import {catchError, debounceTime, delay, filter, map, of, tap, timer} from "rxjs";
 import {Router} from "@angular/router";
 
 @Component({
@@ -37,21 +36,15 @@ export class LoginComponent implements OnInit {
   }
 
   submit() {
-    console.log("Submit")
+    if (this.form.invalid) {
+      return;
+    }
 
-
-    this._authService.login(this.form.value).pipe(
-      tap(value => {
-        console.log('http tap')
-        localStorage.setItem('isAuth', 'true')
-        this._router.navigate([''])
-      }),
-      catchError((err) => {
-        console.log(err['error']['messgae'])
-        this.loginError = err['error']['messgae'] || 'error';
-        this._cdr.detectChanges();
-        return of(err);
-      })
-    ).subscribe();
+    this._authService.login(this.form.value).subscribe({
+      next: () => {
+        this._router.navigate(['/blogs'])
+      },
+      error: (err) => {console.error(err)}
+    });
   }
 }

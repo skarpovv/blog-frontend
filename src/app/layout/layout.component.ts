@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import {Router} from "@angular/router";
+import {AuthService} from "../services/auth";
 
 @Component({
   selector: 'app-layout',
@@ -8,11 +9,10 @@ import {Router} from "@angular/router";
 })
 export class LayoutComponent {
 
-  constructor(private _router: Router) {
-  }
-  logout() {
-    localStorage.setItem('isAuth', 'false')
+  constructor(private _router: Router, private _authService: AuthService) {}
 
+  logout() {
+    this._authService.logout();
     this._router.navigate(['/auth']);
   }
 

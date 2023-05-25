@@ -1,14 +1,15 @@
-<header class="header">
-  <div>
+<mat-toolbar class="header" color="primary">
+  <div class="logo">
     <p>Blogify</p>
   </div>
-  <div>
-  <button mat-flat-button [routerLink]="['']" >Home</button>
-  <button mat-flat-button [routerLink]="['/profile']">Profile</button>
-  <button mat-flat-button (click)="logout()">Log out</button>
+  <div class="nav-links">
+    <button mat-button routerLink="/app/home">Home</button>
+    <button mat-button routerLink="/app/users">Users</button>
+    <button mat-button routerLink="/app/blogs">Blogs</button>
+    <button mat-button routerLink="/app/profile">Profile</button>
+    <button mat-button (click)="logout()">Log out</button>
   </div>
-
-</header>
+</mat-toolbar>
 
 <div class="content">
   <router-outlet></router-outlet>
